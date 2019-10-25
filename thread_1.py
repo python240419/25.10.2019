@@ -35,3 +35,13 @@ if my_thread.isAlive():
 # create another thread which prints out the time
 #    sleep(1)
 #    as a daemon thread
+
+# **Etgar:
+# present a calculation i.e. 5 * 7 = ?
+# wait for the user to input a number until
+# he enters the correct number
+# in the background run a timer of 5 seconds
+# after 5 seconds, if no correct input was given
+# print "too bad..." and exit the program
+# if during the 5 secodns a correct input was given
+# print "correct" and exit the program
