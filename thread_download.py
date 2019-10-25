@@ -3,10 +3,8 @@ import threading
 import time
 import os
 
-#url = 'https://d17fnq9dkz9hgj.cloudfront.net/uploads/2012/11/152964589-welcome-home-new-cat-632x475.jpg'
-
-def download_file(url_file, tofile):
-    urllib.request.urlretrieve(url, f'c:/itay/{filename}')
+def download_file(url, tofile):
+    urllib.request.urlretrieve(url, tofile)
 
 def counting(localFile, thread_ref, maxsize):
     last = -1
@@ -18,10 +16,10 @@ def counting(localFile, thread_ref, maxsize):
             print(f'%{curSize * 100 // maxsize}')
 
 url = 'http://www.study-io.com/java/installations/mongodb-win32-x86_64-2008plus-ssl-3.6.3-signed.msi'
-filename = os.path.basename('mongodb-win32-x86_64-2008plus-ssl-3.6.3-signed.msi')
-
+filename = os.path.basename(url)
+filename_full = f'c:/itay/{filename}'
 download_file_thread = threading.Thread(target=download_file,
-                                        args=(url, filename))
+                                        args=(url, filename_full))
 download_file_thread.start()
 
 # get max size
@@ -29,7 +27,7 @@ d = urllib.request.urlopen(url)
 maxsize = int(d.info().get('content-length'))
 
 size_file_thread = threading.Thread(target=counting,
-                                        args=('C:/itay/mongodb-win32-x86_64-2008plus-ssl-3.6.3-signed.msi', download_file_thread, maxsize))
+                                        args=(filename_full, download_file_thread, maxsize))
 size_file_thread.start()
 
 
