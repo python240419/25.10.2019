@@ -45,3 +45,5 @@ if my_thread.isAlive():
 # print "too bad..." and exit the program
 # if during the 5 secodns a correct input was given
 # print "correct" and exit the program
+
+# solution is different file ...
